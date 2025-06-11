@@ -246,4 +246,82 @@ return {
       require("nvim-tree").setup({})
     end,
   },
+  {
+    "akinsho/toggleterm.nvim",
+    config = function()
+      require("toggleterm").setup({
+        size = 20,
+        open_mapping = [[<c-\>]],
+        hide_numbers = true,
+        shade_filetypes = {},
+        shade_terminals = true,
+        shading_factor = 2,
+        start_in_insert = true,
+        insert_mappings = true,
+        terminal_mappings = true,
+        persist_size = true,
+        persist_mode = true,
+        direction = "float",
+        close_on_exit = true,
+        shell = vim.o.shell,
+        auto_scroll = true,
+        float_opts = {
+          width = vim.o.columns,
+          height = vim.o.lines,
+          row = 0,
+          col = 0,
+          border = "curved",
+          winblend = 0,
+          zindex = 99, -- 最前面に表示
+        },
+      })
+
+      -- -- -- Claude Code専用ターミナルインスタンス
+      local Terminal = require("toggleterm.terminal").Terminal
+      local claude_code = Terminal:new({
+        cmd = "claude",
+        dir = "git_dir",
+        direction = "float",
+        hidden = true, -- 初期状態では非表示
+        float_opts = {
+          border = "double",
+        },
+        on_open = function(term)
+          vim.cmd("startinsert!")
+          -- ターミナル内でのキーマップ
+          vim.api.nvim_buf_set_keymap(
+            term.bufnr,
+            "t",
+            "<C-n>",
+            "<cmd>lua _claude_code_toggle()<CR>",
+            { noremap = true, silent = true }
+          )
+        end,
+      })
+
+      -- トグル関数
+      function _claude_code_toggle()
+        claude_code:toggle()
+      end
+
+      -- キーマップ設定（全モードで有効）
+      vim.keymap.set({ "n" }, "<C-n>", function()
+        _claude_code_toggle()
+      end, { noremap = true, silent = true, desc = "Toggle Claude Code" })
+
+      -- ウィンドウリサイズ時に全画面サイズを維持
+      vim.api.nvim_create_autocmd("VimResized", {
+        callback = function()
+          if claude_code and claude_code:is_open() then
+            vim.api.nvim_win_set_config(claude_code.window, {
+              width = vim.o.columns,
+              height = vim.o.lines,
+              row = 0,
+              col = 0,
+            })
+          end
+        end,
+      })
+    end,
+  },
 }
