@@ -1,4 +1,8 @@
 return {
+  {
+    "karb94/neoscroll.nvim",
+    opts = {},
+  },
   -- messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
