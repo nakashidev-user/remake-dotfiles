@@ -238,7 +238,10 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    lazy = false,
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
+    keys = {
+      { "<C-o>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle nvim-tree" },
+    },
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
@@ -248,6 +251,7 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
     config = function()
       require("toggleterm").setup({
         size = 20,
@@ -279,7 +283,7 @@ return {
       -- -- -- Claude Code専用ターミナルインスタンス
       local Terminal = require("toggleterm.terminal").Terminal
       local claude_code = Terminal:new({
-        cmd = "claude",
+        -- cmd = "claude",
         dir = "git_dir",
         direction = "float",
         hidden = true, -- 初期状態では非表示
@@ -301,6 +305,11 @@ return {
 
       -- トグル関数
       function _claude_code_toggle()
+        -- 現在のウィンドウサイズを取得してfloat_optsを更新
+        claude_code.float_opts.width = vim.o.columns
+        claude_code.float_opts.height = vim.o.lines
+        claude_code.float_opts.row = 0
+        claude_code.float_opts.col = 0
         claude_code:toggle()
       end
 
