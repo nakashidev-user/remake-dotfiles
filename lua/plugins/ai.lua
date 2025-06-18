@@ -1,9 +1,6 @@
 return {
   {
     "coder/claudecode.nvim",
-    dependencies = {
-      "folke/snacks.nvim", -- Optional for enhanced terminal
-    },
     opts = {
       -- Server options
       port_range = { min = 10000, max = 65535 },
