@@ -1,4 +1,14 @@
 return {
+  -- install with yarn or npm
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
   -- Create annotations with one keybind, and jump your cursor in the inserted annotation
   -- Go forward/backward with square brackets
   {
@@ -38,7 +48,6 @@ return {
       })
     end,
   },
-
 
   {
     "nvim-cmp",
