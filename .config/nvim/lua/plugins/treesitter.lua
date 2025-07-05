@@ -5,22 +5,15 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "astro",
-        "cmake",
-        "cpp",
-        "css",
-        "fish",
-        "gitignore",
-        "go",
-        "graphql",
-        "http",
-        "java",
+        "lua",
+        "luadoc",
+        "javascript",
+        "typescript",
+        "json",
+        "yaml",
         "markdown",
-        "php",
-        "rust",
-        "scss",
-        "sql",
-        "svelte",
+        "gitignore",
+        "fish",
       },
 
       highlight = {
@@ -61,9 +54,7 @@ return {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
 
-      -- elixir
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "elixir", "heex", "eex" })
+      -- Keep the existing ensure_installed configuration
 
       -- これを入れるとMakefileの-や```などが隠れる
       -- MDX

@@ -30,7 +30,10 @@ return {
   },
   {
     "karb94/neoscroll.nvim",
-    event = "VeryLazy",
+    keys = {
+      { "<C-u>", desc = "Scroll up" },
+      { "<C-d>", desc = "Scroll down" },
+    },
     opts = {},
   },
   -- messages, cmdline and the popupmenu
@@ -89,7 +92,7 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    event = "VeryLazy",
+    cmd = "Notify",
     opts = {
       timeout = 3000,
     },
@@ -106,7 +109,6 @@ return {
   -- buffer line
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
     keys = {
       { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
       { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },

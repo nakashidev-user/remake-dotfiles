@@ -1,0 +1,56 @@
+-- local wezterm = require("wezterm")
+--
+-- local M = {} -- このテーブルに設定を格納して返す
+--
+-- -- ウィンドウ移動のロジック
+-- function M.user_var_changed(window, pane, name, value)
+-- 	if name == "MOVE_TO_NEXT_MONITOR" then
+-- 		local current_window = window:gui_window()
+-- 		local current_screen = current_window:current_screen()
+-- 		local screens = wezterm.gui.screens()
+--
+-- 		local current_screen_index = -1
+-- 		for i, screen in ipairs(screens) do
+-- 			if
+-- 				screen.pixel_coords.x == current_screen.pixel_coords.x
+-- 				and screen.pixel_coords.y == current_screen.pixel_coords.y
+-- 			then
+-- 				current_screen_index = i
+-- 				break
+-- 			end
+-- 		end
+--
+-- 		if current_screen_index ~= -1 then
+-- 			local next_screen_index = (current_screen_index % #screens) + 1
+-- 			local next_screen = screens[next_screen_index]
+--
+-- 			local new_x = next_screen.pixel_coords.x
+-- 			local new_y = next_screen.pixel_coords.y
+--
+-- 			local was_maximized = current_window:is_maximized()
+-- 			if was_maximized then
+-- 				current_window:unmaximize()
+-- 			end
+--
+-- 			current_window:set_position(new_x, new_y)
+--
+-- 			if was_maximized then
+-- 				current_window:maximize()
+-- 			end
+-- 		end
+-- 	end
+-- end
+--
+-- -- キーバインドを格納するテーブル
+-- M.keys = {
+-- 	{
+-- 		key = "m",
+-- 		mods = "SHIFT",
+-- 		action = wezterm.action_callback(function(win, pane)
+-- 			win:set_user_var("MOVE_TO_NEXT_MONITOR", "true")
+-- 		end),
+-- 	},
+-- 	-- 他のウィンドウ関連のキーバインドもここに追加可能
+-- }
+--
+-- return M -- M テーブルを返す

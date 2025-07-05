@@ -228,12 +228,6 @@ return {
     },
   },
 
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      { "<leader>e", "" },
-    },
-  },
 
   {
     "nvim-tree/nvim-tree.lua",
@@ -251,7 +245,10 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
-    event = "VeryLazy",
+    keys = {
+      { "<c-\\>", desc = "Toggle terminal" },
+      { "<C-n>", desc = "Toggle Claude Code terminal" },
+    },
     config = function()
       require("toggleterm").setup({
         size = 20,

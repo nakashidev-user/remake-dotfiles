@@ -10,12 +10,6 @@ return {
           lsp_format = "fallback", -- not recommended to change
         },
         formatters_by_ft = {
-          ["html.tpl"] = { "prettier" },
-          ["terraform"] = { "terraform_fmt" }, -- Terraform 用のフォーマッターを追加
-          ["tf"] = { "terraform_fmt" }, -- .tf ファイルも対象にする場合
-          ["elixir"] = { "mix_format" }, -- Elixir 用のフォーマッターを追加
-          ["css"] = { "prettier" },
-          ["scss"] = { "prettier" },
           ["javascript"] = { "prettier" },
           ["typescript"] = { "prettier" },
           ["json"] = { "prettier" },
@@ -32,13 +26,7 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "stylua",
-        "selene",
-        "luacheck",
-        "shellcheck",
-        "shfmt",
-        "tailwindcss-language-server",
         "typescript-language-server",
-        "css-lsp",
       })
     end,
   },
@@ -50,64 +38,8 @@ return {
       inlay_hints = { enabled = false },
       -- @type lspconfig.options
       servers = {
-        elixirls = {
-          -- ElixirLS設定
-          cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
-          settings = {
-            elixirLS = {
-              dialyzerEnabled = true,
-              fetchDeps = false,
-              enableTestLenses = true,
-              suggestSpecs = true,
-            },
-          },
-        },
-        cssls = {},
-        tailwindcss = {
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
-        },
-        tsserver = {
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
-          single_file_support = false,
-          settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "literal",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-            javascript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-          },
-        },
-        html = {},
-        yamlls = {
-          settings = {
-            yaml = {
-              keyOrdering = false,
-            },
-          },
-        },
+        -- Core languages for development
         lua_ls = {
-          -- enabled = false,
           single_file_support = true,
           settings = {
             Lua = {
@@ -117,11 +49,6 @@ return {
               completion = {
                 workspaceWord = true,
                 callSnippet = "Both",
-              },
-              misc = {
-                parameters = {
-                  -- "--log-level=trace",
-                },
               },
               hint = {
                 enable = true,
@@ -139,7 +66,6 @@ return {
               },
               diagnostics = {
                 disable = { "incomplete-signature-doc", "trailing-space" },
-                -- enable = false,
                 groupSeverity = {
                   strong = "Warning",
                   strict = "Warning",
@@ -171,7 +97,46 @@ return {
             },
           },
         },
+        -- Web development
+        tsserver = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+          single_file_support = false,
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "literal",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
         eslint = {},
+        -- Only essential servers for common file types
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            },
+          },
+        },
       },
       setup = {
         eslint = function()
