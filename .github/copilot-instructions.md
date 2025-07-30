@@ -35,7 +35,6 @@
 - Bundle sizeとCode Splittingの最適化
 - Server ComponentsとClient Componentsの適切な使い分け
 - 環境変数の安全な取り扱い（NEXT_PUBLIC_プレフィックスの適切な使用）
-**総括**: Next.jsの規約やベストプラクティスに沿っていない箇所があれば、最新のドキュメントに基づいた修正案を提示してください。
 
 ### Go 固有ルール
 - **エラーハンドリング**: 適切なエラー処理、エラーラッピング（`fmt.Errorf` with `%w` verb（動詞））の使用
