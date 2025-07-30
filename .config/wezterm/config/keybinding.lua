@@ -42,7 +42,7 @@ function M.apply_to_config(config)
 		{
 			key = "Enter",
 			mods = "SHIFT",
-			action = wezterm.action.SendString("\n"),
+			action = act.SendKey { key = "Enter" },
 		},
 	}
 
