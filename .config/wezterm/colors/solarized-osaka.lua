@@ -1,6 +1,9 @@
+local STYLE_NAME = "solarized-osaka"
+local TAB_BAR_BG_COLOR = "#191b28"
+
 local function template(str, vars)
     return (str:gsub("%${(.-)}", function(key)
-        return vars[key] or (key == "_style_name" and "solarized-osaka" or "${" .. key .. "}")
+        return vars[key] or (key == "_style_name" and STYLE_NAME or "${" .. key .. "}")
     end))
 end
 
@@ -24,7 +27,7 @@ brights = ["${bg}", "${red}", "${green}", "${yellow}", "${blue}", "${magenta}", 
 
 [colors.tab_bar]
 inactive_tab_edge = "${base03}"
-background = "#191b28"
+background = "${tab_bar_background}"
 
 [colors.tab_bar.active_tab]
 fg_color = "${blue}"
@@ -44,7 +47,7 @@ bg_color = "${blue}"
 
 [colors.tab_bar.new_tab]
 fg_color = "${blue}"
-bg_color = "#191b28"
+bg_color = "${tab_bar_background}"
 
 [metadata]
 aliases = []
