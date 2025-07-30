@@ -1,4 +1,4 @@
--- local palette = require("colors.cyberdream").palette -- 新しく追加: カラーパレットを読み込む
+-- local palette = require("colors.solarized-osaka").palette -- 新しく追加: カラーパレットを読み込む
 
 local M = {}
 
