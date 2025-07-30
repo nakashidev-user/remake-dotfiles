@@ -1,6 +1,10 @@
 local STYLE_NAME = "solarized-osaka"
 local TAB_BAR_BG_COLOR = "#191b28"
 
+--- テンプレート文字列内の変数を置換する関数
+--- @param str string テンプレート文字列
+--- @param vars table 置換変数のテーブル
+--- @return string 置換後の文字列
 local function template(str, vars)
     return (str:gsub("%${(.-)}", function(key)
         return vars[key] or (key == "_style_name" and STYLE_NAME or "${" .. key .. "}")
