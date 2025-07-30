@@ -32,7 +32,6 @@ function M.apply_to_config(config)
 		bottom = 0,
 	}
 	config.window_close_confirmation = "NeverPrompt"
-	config.default_cursor_style = "BlinkingBar"
 	config.cursor_blink_rate = 600
 	config.cursor_blink_ease_out = "Linear"
 
