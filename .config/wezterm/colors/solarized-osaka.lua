@@ -6,12 +6,45 @@ local TAB_BAR_BG_COLOR = "#191b28"
 --- @param vars table 置換変数のテーブル
 --- @return string 置換後の文字列
 local function template(str, vars)
+    local allowed_keys = {
+        "fg", "bg", "blue700", "black", "red", "green", "yellow", "blue", "magenta", "cyan", "base0",
+        "base03", "base02", "tab_bar_background", "_style_name"
+    }
+    local function is_valid_key(key)
+        for _, allowed_key in ipairs(allowed_keys) do
+            if key == allowed_key then
+                return true
+            end
+        end
+        return false
+    end
     return (str:gsub("%${(.-)}", function(key)
-        return vars[key] or (key == "_style_name" and STYLE_NAME or "${" .. key .. "}")
+        if is_valid_key(key) then
+            return vars[key] or (key == "_style_name" and STYLE_NAME or "${" .. key .. "}")
+        else
+            return "${" .. key .. "}"
+        end
     end))
 end
 
 local M = {}
+
+--- @class ColorScheme
+--- @field fg string The foreground color
+--- @field bg string The background color
+--- @field blue700 string The selection background color
+--- @field black string The ANSI black color
+--- @field red string The ANSI red color
+--- @field green string The ANSI green color
+--- @field yellow string The ANSI yellow color
+--- @field blue string The ANSI blue color
+--- @field magenta string The ANSI magenta color
+--- @field cyan string The ANSI cyan color
+--- @field base0 string The ANSI base0 color
+--- @field base03 string The inactive tab edge color
+--- @field base02 string The inactive tab foreground color
+--- @field tab_bar_background string The tab bar background color
+--- @field _style_name string The style name (internal use)
 
 --- @param colors ColorScheme
 function M.generate(colors)
@@ -55,7 +88,7 @@ bg_color = "${tab_bar_background}"
 
 [metadata]
 aliases = []
-author = "craftzdog"
+author = "nakashidev-user"
 name = "${_style_name}"]],
 		colors
 	)
