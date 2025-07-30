@@ -27,6 +27,7 @@ function M.apply_to_config(config)
 		{ key = "c", mods = "SUPER", action = act.CopyTo("Clipboard") },
 		{ key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
 		{
+			-- CTRL+wでペイン操作のリーダーキーを起動（vimライクな操作感の向上）
 			key = "w",
 			mods = "CTRL",
 			action = act.ActivateKeyTable({
