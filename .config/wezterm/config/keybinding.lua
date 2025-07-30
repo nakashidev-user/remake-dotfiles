@@ -36,6 +36,7 @@ function M.apply_to_config(config)
 			}),
 		},
 		{
+			-- CTRL+sを無効化（保存操作の誤動作防止とvim/tmuxとの競合回避）
 			key = "s",
 			mods = "CTRL",
 			action = act.DisableDefaultAssignment,
