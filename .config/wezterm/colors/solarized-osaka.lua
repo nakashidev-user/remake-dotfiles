@@ -1,6 +1,6 @@
 local function template(str, vars)
     return (str:gsub("%${(.-)}", function(key)
-        return vars[key] or "${" .. key .. "}"
+        return vars[key] or (key == "_style_name" and "solarized-osaka" or "${" .. key .. "}")
     end))
 end
 
