@@ -1,10 +1,14 @@
-local util = require("solarized-osaka.util")
+local function template(str, vars)
+    return (str:gsub("%${(.-)}", function(key)
+        return vars[key] or "${" .. key .. "}"
+    end))
+end
 
 local M = {}
 
 --- @param colors ColorScheme
 function M.generate(colors)
-	local wezterm = util.template(
+	local wezterm = template(
 		[[
 [colors]
 foreground = "${fg}"
