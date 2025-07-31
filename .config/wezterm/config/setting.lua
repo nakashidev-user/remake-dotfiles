@@ -10,11 +10,15 @@ function M.apply_to_config(config)
 	config.initial_cols = 120
 	config.initial_rows = 28
 	config.window_background_opacity = 0.95
+	config.default_cursor_style = "BlinkingBar"
 	config.font = wezterm.font_with_fallback({
 		"0xProto Nerd Font Mono",
 	})
 	config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 	config.font_size = 16.0
+	config.window_background_gradient = {
+		colors = { "#000305" }, -- 背景グラデーション用の色（将来的にはpalette.base04を使用予定）
+	}
 
 	config.window_decorations = "RESIZE"
 	config.window_frame = {
@@ -28,9 +32,10 @@ function M.apply_to_config(config)
 		bottom = 0,
 	}
 	config.window_close_confirmation = "NeverPrompt"
-	config.default_cursor_style = "BlinkingBar"
 	config.cursor_blink_rate = 600
 	config.cursor_blink_ease_out = "Linear"
+
+	config.audible_bell = "SystemBeep"
 end
 
 return M
