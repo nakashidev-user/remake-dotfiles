@@ -32,7 +32,7 @@ keymap.set("n", "-", "<C-x>")
 keymap.set("n", "dw", 'vb"_d')
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap.set("n", "<C-g>", "gg<S-v>G")
 
 -- Disable continuations
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
@@ -48,11 +48,8 @@ keymap.set("n", "K", "10k")
 keymap.set("v", "J", "10j")
 keymap.set("v", "K", "10k")
 
--- open tree
-keymap.set("n", "<C-o>", ":NvimTreeToggle<CR>")
-
 -- New tab
-keymap.set("n", "te", ":tabedit")
+keymap.set("n", "te", ":tabedit<Return>")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 

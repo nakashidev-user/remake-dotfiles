@@ -21,7 +21,8 @@ require("lazy").setup({
 			"LazyVim/LazyVim",
 			import = "lazyvim.plugins",
 			opts = {
-				colorscheme = "solarized-osaka",
+				-- colorscheme = "solarized-osaka",
+				colorscheme = "catppuccin-macchiato",
 				news = {
 					lazyvim = false,
 					neovim = true,
@@ -30,8 +31,6 @@ require("lazy").setup({
 		},
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
-		-- { import = "lazyvim.plugins.extras.ai.copilot" },
-		-- { import = "lazyvim.plugins.extras.ai.copilot-chat" },
 		{ import = "plugins" },
 	},
 	defaults = {
@@ -39,7 +38,6 @@ require("lazy").setup({
 		version = "*",
 	},
 	concurrency = 50,
-	install = { colorscheme = { "solarized-osaka", "tokyonight", "habamax" } },
 	checker = {
 		enabled = false,
 		notify = false,
