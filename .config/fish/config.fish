@@ -34,7 +34,12 @@ if status is-interactive
     alias google "~/.config/fish/scripts/google.sh"
     # alias wi "wezterm imgcat"
     alias lg lazygit
-    alias c. "cursor ."
+    function cu
+        cursor $argv
+    end
+    function ag
+        antigravity $argv
+    end
     alias gw "git switch"
     alias c "claude"
     command -qv nvim && alias vim nvim
@@ -109,3 +114,16 @@ if status is-interactive
         source $LOCAL_CONFIG
     end
 end
+
+
+
+
+# Added by Windsurf
+fish_add_path /Users/nakashimadays365/.codeium/windsurf/bin
+
+set -gx WASMTIME_HOME "$HOME/.wasmtime"
+
+string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH
+
+# Added by Antigravity
+fish_add_path /Users/nakashimadays365/.antigravity/antigravity/bin
