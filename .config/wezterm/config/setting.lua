@@ -5,12 +5,18 @@ local M = {}
 function M.apply_to_config(config)
 	config.detect_password_input = true
 	-- color_scheme -------------------------------------
-	config.color_scheme = "Solarized Dark - Patched"
+	-- config.color_scheme = "Solarized Dark - Patched"
 	-- config.color_scheme = "Sakura"
 	-- config.color_scheme = "Selenized Black (Gogh)"
 	-- config.color_scheme = "Eldritch"
-	config.color_scheme = "tokyonight_night"
+	config.color_scheme = "Catppuccin Frappe"
+	-- config.color_scheme = "tokyonight_night"
+	-- config.color_scheme = "moonfly"
 	-- config.color_scheme = "JetBrains Darcula"
+	-- config.color_scheme = "murphy"
+	-- config.color_schemes = {
+	-- ["murphy"] = require("colors.murphy"),
+	-- }
 	-----------------------------------------------------
 	config.use_ime = true
 	config.term = "xterm-256color"
@@ -23,7 +29,7 @@ function M.apply_to_config(config)
 		-- "0xProto Nerd Font Mono",
 		-- "Moralerspace Krypton",
 		-- "Moralerspace Argon",
-		-- "Moralerspace Neon",
+		"Moralerspace Neon",
 		-- "Moralerspace Radon",
 		-- "monospace",
 		-- "Press Start 2P",
@@ -33,11 +39,11 @@ function M.apply_to_config(config)
 		-- "Monaco",
 		-- "Menlo",
 		-- "Terminess Nerd Font Mono",
-		"JetBrains Mono",
+		-- "JetBrains Mono",
 	})
-	config.font = wezterm.font("JetBrains Mono", { weight = "Bold", italic = false })
+	config.font = wezterm.font("Moralerspace Neon", { weight = "Regular", italic = false }) -- Light, Regular, Bold
 	config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
-	config.font_size = 15.0
+	config.font_size = 17.0
 	-----------------------------------------------------
 	config.window_background_gradient = {
 		colors = { "#000305", "#12131f", "#212337" },
@@ -59,7 +65,7 @@ function M.apply_to_config(config)
 	config.cursor_blink_ease_out = "Linear"
 
 	config.audible_bell = "SystemBeep"
-	config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 2000 }
+	-- config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 2000 }
 end
 
 return M

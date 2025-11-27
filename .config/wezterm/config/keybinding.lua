@@ -25,15 +25,16 @@ function M.apply_to_config(config)
 		{ key = "o", mods = "CMD", action = act.ToggleFullScreen },
 		{ key = "c", mods = "SUPER", action = act.CopyTo("Clipboard") },
 		{ key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
-		-- {
-		-- 	-- CTRL+wでペイン操作のリーダーキーを起動（vimライクな操作感の向上）
-		-- 	key = "w",
-		-- 	mods = "LEADER",
-		-- 	action = act.ActivateKeyTable({
-		-- 		name = "leader_w_pane_nav",
-		-- 		timeout_milliseconds = 1500,
-		-- 	}),
-		-- },
+
+		{
+			-- CTRL+wでペイン操作のリーダーキーを起動（vimライクな操作感の向上）
+			key = "w",
+			mods = "LEADER",
+			action = act.ActivateKeyTable({
+				name = "leader_w_pane_nav",
+				timeout_milliseconds = 1500,
+			}),
+		},
 		{
 			-- CTRL+sを無効化（保存操作の誤動作防止とvim/tmuxとの競合回避）
 			key = "s",
@@ -70,7 +71,6 @@ function M.apply_to_config(config)
 			}),
 		},
 	}
-
 	config.key_tables = {
 		leader_w_pane_nav = {
 			{
