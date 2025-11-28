@@ -71,3 +71,6 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- markdownpreview
 keymap.set("n", "md", ":MarkdownPreview<CR>")
+
+-- oil
+vim.keymap.set("n", "<Leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })

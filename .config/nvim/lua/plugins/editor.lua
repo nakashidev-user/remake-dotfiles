@@ -254,64 +254,96 @@ return {
 			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 		},
 	},
-
 	{
-		"nvim-neo-tree/neo-tree.nvim",
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 		lazy = false,
-		-- keys = {
-		-- 	{ "<leader>e", "" },
-		-- 	{ "<C-o>", "<cmd>Neotree toggle<cr>", desc = "Toggle neo-tree" },
-		-- },
-		opts = {
-			sources = { "filesystem", "buffers", "git_status" },
-			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
-			filesystem = {
-				bind_to_cwd = false,
-				follow_current_file = { enabled = true },
-				use_libuv_file_watcher = true,
-			},
-			window = {
-				width = 25,
-				mappings = {
-					["s"] = "noop", -- sキーを無効化
-					["<C-v>"] = "open_vsplit", -- Ctrl+vで垂直分割
+		config = function()
+			require("oil").setup({
+				keymaps = {
+					["g?"] = { "actions.show_help", mode = "n" },
+					["<CR>"] = "actions.select",
+					["<C-s>"] = { "actions.select", opts = { vertical = true } },
+					["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+					["<C-t>"] = { "actions.select", opts = { tab = true } },
+					["<C-p>"] = "actions.preview",
+					["<C-c>"] = { "actions.close", mode = "n" },
+					["<C-l>"] = "actions.refresh",
+					["-"] = { "actions.parent", mode = "n" },
+					["_"] = { "actions.open_cwd", mode = "n" },
+					["`"] = { "actions.cd", mode = "n" },
+					["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+					["gs"] = { "actions.change_sort", mode = "n" },
+					["gx"] = "actions.open_external",
+					["g."] = { "actions.toggle_hidden", mode = "n" },
+					["g\\"] = { "actions.toggle_trash", mode = "n" },
 				},
-			},
-			default_component_configs = {
-				indent = {
-					with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
-					expander_collapsed = "",
-					expander_expanded = "",
-					expander_highlight = "NeoTreeExpander",
-				},
-				git_status = {
-					symbols = {
-						unstaged = "󰄱",
-						staged = "󰱒",
-					},
-				},
-			},
-			-- ★ ここを追加：開閉のたびに均等化
-			event_handlers = {
-				{
-					event = "neo_tree_window_after_open",
-					handler = function(args)
-						if args.position == "left" or args.position == "right" then
-							vim.cmd("wincmd =")
-						end
-					end,
-				},
-				{
-					event = "neo_tree_window_after_close",
-					handler = function(args)
-						if args.position == "left" or args.position == "right" then
-							vim.cmd("wincmd =")
-						end
-					end,
-				},
-			},
-		},
+			})
+		end,
 	},
+	-- {
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	lazy = false,
+	-- 	-- keys = {
+	-- 	-- 	{ "<leader>e", "" },
+	-- 	-- 	{ "<C-o>", "<cmd>Neotree toggle<cr>", desc = "Toggle neo-tree" },
+	-- 	-- },
+	-- 	opts = {
+	-- 		sources = { "filesystem", "buffers", "git_status" },
+	-- 		open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
+	-- 		filesystem = {
+	-- 			bind_to_cwd = false,
+	-- 			follow_current_file = { enabled = true },
+	-- 			use_libuv_file_watcher = true,
+	-- 		},
+	-- 		window = {
+	-- 			width = 25,
+	-- 			mappings = {
+	-- 				["s"] = "noop", -- sキーを無効化
+	-- 				["<C-v>"] = "open_vsplit", -- Ctrl+vで垂直分割
+	-- 			},
+	-- 		},
+	-- 		default_component_configs = {
+	-- 			indent = {
+	-- 				with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+	-- 				expander_collapsed = "",
+	-- 				expander_expanded = "",
+	-- 				expander_highlight = "NeoTreeExpander",
+	-- 			},
+	-- 			git_status = {
+	-- 				symbols = {
+	-- 					unstaged = "󰄱",
+	-- 					staged = "󰱒",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 		-- ★ ここを追加：開閉のたびに均等化
+	-- 		event_handlers = {
+	-- 			{
+	-- 				event = "neo_tree_window_after_open",
+	-- 				handler = function(args)
+	-- 					if args.position == "left" or args.position == "right" then
+	-- 						vim.cmd("wincmd =")
+	-- 					end
+	-- 				end,
+	-- 			},
+	-- 			{
+	-- 				event = "neo_tree_window_after_close",
+	-- 				handler = function(args)
+	-- 					if args.position == "left" or args.position == "right" then
+	-- 						vim.cmd("wincmd =")
+	-- 					end
+	-- 				end,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"akinsho/toggleterm.nvim",
 		keys = {

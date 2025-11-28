@@ -116,15 +116,19 @@ return {
 	-- buffer line
 	{
 		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
 		keys = {
 			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
 			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
 		},
-		-- config = function(_, opts)
-		-- 	require("bufferline").setup(opts)
-		-- 	-- バッファライン背景色をダークに設定
-		-- 	vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "#000305" })
-		-- end,
+		opts = {
+			options = {
+				mode = "tabs",
+				-- separator_style = "slant",
+				show_buffer_close_icons = false,
+				show_close_icon = false,
+			},
+		},
 	},
 
 	-- filename
