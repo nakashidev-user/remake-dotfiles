@@ -1,0 +1,301 @@
+{
+  "workbench.iconTheme": "catppuccin-macchiato",
+  "editor.formatOnSave": true,
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "extensions.autoUpdate": true, //プラグインを自動アップデート
+  "workbench.list.defaultFindMode": "highlight",
+  "editor.fontSize": 16.5,
+  "editor.lineNumbers": "relative",
+  "editor.fontWeight": "normal",
+  "editor.cursorBlinking": "smooth",
+  "editor.quickSuggestions": {
+    //入力補完を自動で表示する
+    "other": true, //文字列以外
+    "strings": true, //文字列
+    "comments": true //コメント
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": {
+      "foreground": "#7f9ea0", //コメントの色
+      "fontStyle": ""
+    }
+  },
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.showIcons": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.tabCloseButton": "right",
+  "workbench.startupEditor": "none",
+  "workbench.editor.openPositioning": "last",
+  "explorer.openEditors.visible": 1,
+  // ワークベンチ設定
+  "window.titleBarStyle": "native", //minimapを非表示に
+  "window.newWindowDimensions": "maximized",
+  "workbench.editor.enablePreviewFromQuickOpen": true, // アクティビティバー(左端)を非表示に
+  "workbench.editor.enablePreview": true, //毎回新規で開く
+  "workbench.statusBar.visible": true, // ステータスバー(下端)を表示
+  "workbench.editor.showTabs": "single", //毎回新規で開く
+  "workbench.layoutControl.type": "both", // レイアウトコントロール
+  "workbench.editor.tabSizing": "fit", // タブが多い場合,文字を非表示にしてもタブ表示を優先する
+  "workbench.sideBar.location": "left",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#8caff5",
+    "statusBar.noFolderBackground": "#8caff5",
+    "statusBar.debuggingBackground": "#8caff5",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.debuggingForeground": "#ffffff",
+    "tab.activeModifiedBorder": "#ff8800",
+    "tab.unfocusedActiveModifiedBorder": "#ff8800"
+  },
+  "vim.leader": "<space>", //Map Leaderの設定
+  "vim.autoindent": true, //autoindent
+  "vim.visualstar": true, //カーソル上にあるワードを"*"で検索
+  "vim.useCtrlKeys": true, //諸々のctrlキーを使った操作が有効になる
+  "vim.debug.silent": true, //アラートを出さない
+  "vim.timeout": 1200, //入力のタイムアウト時間
+  "vim.mouseSelectionEnable": false,
+  "vim.foldfix": true,
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  // vim plugin有効化
+  "vim.easymotion": true, //easy motionを有効化
+  "vim.surround": true, //surroundを有効にする
+  //easy motion
+  "vim.easymotionMarkerForegroundColorOneChar": "rgba(0,240,170,0.9)", //一文字目の色
+  "vim.easymotionMarkerBackgroundColor": "#FFFFFF", //背景色
+  "vim.easymotionMarkerFontWeight": "bold", //フォントの太さ
+  "vim.easymotionKeys": "asdfhjklwqeruioopghty;", //マーカーに使用される文字列
+  "vim.mouseSelectionGoesIntoVisualMode": false,
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors.normal": ["#8caff5", "#ffffff"],
+  "vim.statusBarColors.insert": ["#8bd5ca", "#ffffff"],
+  "vim.statusBarColors.visual": ["#c29df2", "#ffffff"],
+  "vim.statusBarColors.visualline": ["#c29df2", "#ffffff"],
+  "vim.statusBarColors.visualblock": ["#c29df2", "#ffffff"],
+  "vim.statusBarColors.replace": ["#d98e96", "#ffffff"],
+  //nnoremap
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["F"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["g", "l"],
+      "commands": ["editor.action.marker.nextInFiles"]
+    },
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      "before": ["J"],
+      "after": ["1", "0", "j"]
+    }, //移動を早める
+    {
+      "before": ["K"],
+      "after": ["1", "0", "k"]
+    }, //移動を早める
+    {
+      "before": ["H"],
+      "after": ["0"]
+    }, //端に移動
+    {
+      "before": ["L"],
+      "after": ["$"]
+    }, //端に移動
+    {
+      "before": ["s", "h"],
+      "after": ["<C-w>", "h"]
+    }, //window移動
+    {
+      "before": ["s", "j"],
+      "after": ["<C-w>", "j"]
+    }, //window移動
+    {
+      "before": ["s", "k"],
+      "after": ["<C-w>", "k"]
+    }, //window移動
+    {
+      "before": ["s", "l"],
+      "after": ["<C-w>", "l"]
+    }, //window移動
+    {
+      "before": ["]"],
+      "commands": [
+        {
+          "command": "C_Cpp.PeekDeclaration"
+        }
+      ],
+      "when": ["editorLangId == c"]
+    }, //宣言を見る c専用
+    {
+      "before": ["["],
+      "commands": [
+        {
+          "command": "editor.action.peekDefinition"
+        }
+      ]
+    }, //定義を見る
+    {
+      "before": ["s", "s"],
+      "commands": [":split"]
+    }, //水平に開く
+    {
+      "before": ["s", "v"],
+      "commands": [":vsplit"]
+    }, //水平にを閉じる
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    }, //インデント調整(repeat可能)
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }, //インデント調整(repeat可能)
+    {
+      "before": ["Tab"],
+      "after": ["g", "t"]
+    }, //tab移動
+    {
+      "before": ["S-Tab"],
+      "after": ["g", "T"]
+    }, //tab移動
+    {
+      "before": ["<Leader>", ":"],
+      "commands": [{ "command": "workbench.action.showCommands" }]
+    }, //コマンドパレット
+    // 検索結果を画面中央に
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z"]
+    },
+    {
+      "before": ["*"],
+      "after": ["*", "z", "z"]
+    },
+    {
+      "before": ["#"],
+      "after": ["#", "z", "z"]
+    },
+    //Surround
+    {
+      "before": ["s"],
+      "after": ["y", "s"]
+    }, //surround add
+    //easy motion
+    {
+      "before": ["f"],
+      "after": ["<Leader>", "<Leader>", "2", "s"]
+    }, //easymotion 2s
+    //Multi-Cursor Mode
+    //prefix Ctrl
+    {
+      "before": ["<C-n>"],
+      "after": ["g", "b"]
+    }, //選択した文字に対して増やす
+    {
+      "before": ["<Leader>", "@"],
+      "commands": [
+        {
+          "command": "markdown-preview-enhanced.openPreviewToTheSide"
+        }
+      ]
+    }, //markdownで開く
+    {
+      "before": ["<Esc>", "<Esc>"],
+      "commands": [":noh"]
+    }, //水平にを閉じる
+    {
+      "before": ["space", "f"],
+      "commands": ["workbench.action.findInFiles"],
+      "when": "true"
+    }
+  ],
+  //insert mode
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["J", "k"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["J", "K"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": [";", ";"],
+      "commands": ["editor.action.triggerSuggest"]
+    } //;;でサジェストの起動に使う
+  ],
+  // Visual Mode
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["J"],
+      "after": ["1", "0", "j"]
+    }, //移動を早める
+    {
+      "before": ["K"],
+      "after": ["1", "0", "k"]
+    } //移動を早める
+  ],
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "editor.guides.bracketPairs": true,
+  "editor.stickyScroll.enabled": true,
+  "go.toolsManagement.autoUpdate": true,
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "vsicons.dontShowNewVersionMessage": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "emmet.includeLanguages": {
+    "ejs": "html",
+    "html-eex": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "editor.fontFamily": "'MonaspiceNe Nerd Font Mono','0xProto Nerd Font Mono','MonaspiceXe Nerd Font Mono', monospace, 'MonaspiceRn Nerd Font Mono',   'Press Start 2P',  'Monocraft Nerd Font',  'FiraCode Nerd Font', 'Hack Nerd Font Mono', Monaco, Menlo, 'Terminess Nerd Font Mono'",
+  "editor.fontLigatures": false,
+  "editor.minimap.showSlider": "always",
+  "omnisharp.useModernNet": false,
+  "files.associations": {
+    "*.tpl": "html"
+  },
+  // "files.autoSave": "onFocusChange",
+  // or
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "editor.minimap.size": "fill",
+  "workbench.editor.tabActionLocation": "right",
+  "makefile.configureOnOpen": false,
+  "workbench.preferredDarkColorTheme": "Cursor Dark Midnight",
+  "hediet.vscode-drawio.resizeImages": null,
+  "hediet.vscode-drawio.theme": "Kennedy",
+  "window.zoomLevel": -0.5,
+  "workbench.colorTheme": "Catppuccin Macchiato",
+  "terminal.integrated.profiles.osx": {
+    "fish": { "path": "/opt/homebrew/bin/fish" },
+    "bash": { "path": "/bin/bash" },
+    "zsh": { "path": "/bin/zsh" }
+  },
+  "terminal.integrated.defaultProfile.osx": "fish"
+}
