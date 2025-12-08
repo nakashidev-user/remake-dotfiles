@@ -203,3 +203,69 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+# ==============================
+# AeroSpace Config (Final Setup)
+# ==============================
+
+# ------------------------------
+# アプリごとの Workspace 固定設定
+# ------------------------------
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'notion.id'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.todesktop.230313mzl4w4u92'  # Cursor
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.github.wez.wezterm'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.dia'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace 2'
+
+
+# ------------------------------
+# モニターごとの Workspace 固定
+# ------------------------------
+# Workspace 1 → 内蔵ディスプレイ（MacBook側）
+# Workspace 2 → 外部モニター（VG245 or KG251Q どちらか接続時）
+# ------------------------------
+
+[workspace-to-monitor-force-assignment]
+1  = 'Built-in Retina Display'
+2  = '(VG245|KG251Q|LG HDR WFHD|DELL S2722QC)'
+
+
+# ------------------------------
+# Optional（起動時だけ移動したい場合）
+# AeroSpace 起動時のみ workspace 移動したい場合は以下のようにする
+# ------------------------------
+# [[on-window-detected]]
+# if.app-id = 'com.tinyspeck.slackmacgap'
+# if.during-aerospace-startup = true
+# run = 'move-node-to-workspace 1'
